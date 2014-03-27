@@ -1,0 +1,33 @@
+<?php
+
+ $title = 'My plans';
+ $this->headTitle($title);
+ ?>
+ <h1><?php echo $this->escapeHtml($title); ?></h1>
+ <p>
+     <a href="<?php echo $this->url('application', array('action'=>'add'));?>">Add new plan</a>
+ </p>
+
+ <table class="table">
+ <tr>
+     <th>ID</th>
+     <th>NAME</th>
+     <th>YEAR</th>
+     <th>VERSION</th>
+     <th>&nbsp;</th>
+ </tr>
+ <?php foreach ($plans as $plan) : ?>
+ <tr>
+     <td><?php echo $this->escapeHtml($plan->PLAN_ID);?></td>
+     <td><?php echo $this->escapeHtml($plan->PLAN_NAME);?></td>
+     <td><?php echo $this->escapeHtml($plan->PLAN_YEAR);?></td>
+     <td><?php echo $this->escapeHtml($plan->PLAN_VERSION);?></td>
+     <td>
+         <a href="<?php echo $this->url('application',
+             array('action'=>'edit', 'id' => $plan->PLAN_ID));?>">Edit</a>
+         <a href="<?php echo $this->url('application',
+             array('action'=>'delete', 'id' => $plan->PLAN_ID));?>">Delete</a>
+     </td>
+ </tr>
+ <?php endforeach; ?>
+ </table>
