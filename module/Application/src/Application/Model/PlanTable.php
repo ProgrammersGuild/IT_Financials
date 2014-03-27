@@ -3,6 +3,7 @@
 namespace Application\Model;
 
 use Zend\Db\TableGateway\TableGateway;
+use Zend\Db\Adapter\Exception\RuntimeException;
 
 class PlanTable
 {
@@ -38,5 +39,18 @@ class PlanTable
 			throw new \Exception("Could not find any entry with year $year, plan $plan and version $version");
 		}
 		return $row;
+	}
+	
+	public function addNewPlan($year, $plan, $version)
+	{
+		try
+		{
+			$this->tableGateway->insert(array('PLAN_YEAR' => $year, 'PLAN_NAME' => $plan, 'PLAN_VERSION' => $version));
+		}
+		catch (RuntimeException $e)
+		{
+			throw new \Exception($e->getMessage());
+		}
+	
 	}
 }

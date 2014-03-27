@@ -14,8 +14,8 @@
 return array(
      'db' => array(
          'driver' => 'Sqlsrv',
-         'hostname' => 'tsgwp00087.atjenn01.ps.ge.com',
-          'database' => 'ITF'
+         'hostname' => 'TNWQ010290.atjenn01.ps.ge.com',
+          'database' => 'IT_Financials'
          ),
      'service_manager' => array(
          'factories' => array(
